@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 function ConfirmTransactionPage() {
+//TODO: decryptograph user infos
   const queryParams = new window.URLSearchParams(window.location.search);
   const value = queryParams.get("value");
   const pixId = queryParams.get("id");

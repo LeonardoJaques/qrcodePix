@@ -10,9 +10,11 @@ function QrCodePage() {
 
   const generateQrCode = () => {
     console.log("submit ", pixId, value);
+    // TODO:Cryptograph user info
     setLinkQrCode(
       `${window.location.href}/confirm-transaction?id=${pixId}&value=${value}`
     );
+    // TODO:clear form values
     setIsQrCodeGenerated(true);
   };
 
@@ -29,11 +31,15 @@ function QrCodePage() {
   };
 
   return (
+    //TODO:transform to component
+    //TODO:validate form
     <div className="col-lg-6 col-lg-offset-3">
       <legend>Generate QrCode Pix</legend>
       <form>
         <div className="form-group">
-          <label for="pixId">Pix ID</label>
+          <label for="pixId">
+            Pix ID (email, phone number, cpf, random key)
+          </label>
           <div className="input-group">
             <input
               type="text"
@@ -64,6 +70,7 @@ function QrCodePage() {
             onChange={(e) => setValue(e.target.value)}
           />
         </div>
+        {/* //TODO:enable button only if form is valid */}
         <button
           type="button"
           className="btn btn-success"
