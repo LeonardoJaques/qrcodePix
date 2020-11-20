@@ -13,7 +13,7 @@ function ConfirmTransactionPage() {
       <legend>Confirm transaction</legend>
       <form>
         <div className="form-group">
-          <label for="pixId">Pix ID</label>
+          <label for="pixId">Pix ID (email, phone number, CPF, Key word)</label>
           <input
             type="text"
             className="form-control"

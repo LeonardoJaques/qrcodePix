@@ -10,8 +10,22 @@ function QrCodePage() {
 
   const generateQrCode = () => {
     console.log("submit ", pixId, value);
-    setLinkQrCode(`${window.location.href}/confirm-transaction?id=${pixId}&value=${value}`);
+    setLinkQrCode(
+      `${window.location.href}/confirm-transaction?id=${pixId}&value=${value}`
+    );
     setIsQrCodeGenerated(true);
+  };
+
+  const hashCode = (length = 25) => {
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwyxz1234567890".match(
+      /./g
+    );
+    let text = "";
+    for (let i = 0; i < length; i++) {
+      text += charset[Math.floor(Math.random() * charset.length)];
+    }
+    console.log(text);
+    return text;
   };
 
   return (
@@ -20,13 +34,25 @@ function QrCodePage() {
       <form>
         <div className="form-group">
           <label for="pixId">Pix ID</label>
-          <input
-            type="text"
-            className="form-control"
-            id="pixId"
-            placeholder="Pix ID"
-            onChange={(e) => setPixId(e.target.value)}
-          />
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              id="pixId"
+              placeholder="Pix ID"
+              value={pixId}
+              onChange={(e) => setPixId(e.target.value)}
+            />
+            <span className="input-group-btn">
+              <button
+                className="btn btn-default"
+                onClick={() => setPixId(hashCode())}
+                type="button"
+              >
+                Generate
+              </button>
+            </span>
+          </div>
         </div>
         <div className="form-group">
           <label for="value">Valor</label>
